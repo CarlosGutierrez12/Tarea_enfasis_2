@@ -1,0 +1,1 @@
+Proyecto subido con las variables de entorno, la contraseña de la db es docker.
