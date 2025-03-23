@@ -54,7 +54,7 @@ const create = async(req,res,next)=>{
             }
         } else {
             message = {
-                msg: "error, usuario no creado"
+                msg: "error, registro no creado"
             }
         }
         response.success(req,res,message,201);

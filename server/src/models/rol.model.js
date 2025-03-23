@@ -1,20 +1,21 @@
-const { DataTypes } =  require("sequelize");
+const { DataTypes } = require("sequelize");
 const sequelize = require("../db/db");
 const User = require("./user.model");
 
 const Rol = sequelize.define(
     "Rol",
     {
-        id:{
+        id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        name:{
+        name: {
             type: DataTypes.STRING(100),
             allowNull: false,
-            validate:{
-                notNull: {msg:"El nombre es obligatorio"}
+            unique: true,
+            validate: {
+                notNull: { msg: "El nombre es obligatorio" }
             }
         }
     },
@@ -23,14 +24,14 @@ const Rol = sequelize.define(
     }
 );
 
-Rol.hasMany(User,{
-    foreignkey: "rol_id",
-    sourcekey: "id"
+Rol.hasMany(User, {
+    foreignKey: "rol_id",
+    sourceKey: "id"
 });
 
-User.belongsTo(Rol,{
-    foreignkey: "rol_id",
-    targetkey: "id"
+User.belongsTo(Rol, {
+    foreignKey: "rol_id",
+    targetKey: "id"
 });
 
 module.exports = Rol;
